@@ -8,6 +8,11 @@ export class CadastroUsuarioService {
 	constructor(private readonly http: HttpClient) {}
 
   cadastrarUsuario(usuario: UsuarioDTO): Observable<UsuarioDTO> {
-    return this.http.post<UsuarioDTO>(`${environment.cadastroApiUrl}/usuario`, usuario);
+    return this.http.post<UsuarioDTO>(`/api/cadastrar-usuario`, usuario);
   }
+
+  logarUsuario(usuario: UsuarioDTO): Observable<UsuarioDTO> {
+    return this.http.get<UsuarioDTO>(`/api/login-usuario/${usuario.usuario}/${usuario.password}`, );
+  }
+
 }

@@ -6,11 +6,15 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CadastroUsuarioComponent } from './cadastro-usuario/cadastro-usuario.component';
+import { LoginUsuarioComponent } from './login-usuario/login-usuario.component';
+import { AcompanhamentoComponent } from './acompanhamento/acompanhamento.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CadastroUsuarioComponent,
+    LoginUsuarioComponent,
+    AcompanhamentoComponent,
   ],
   imports: [
     BrowserModule,

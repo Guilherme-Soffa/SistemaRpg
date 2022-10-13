@@ -1,4 +1,4 @@
-package service.dto;
+package br.uniceub.rpg.service.dto;
 
 import lombok.*;
 

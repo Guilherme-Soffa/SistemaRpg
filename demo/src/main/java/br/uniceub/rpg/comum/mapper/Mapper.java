@@ -1,4 +1,4 @@
-package comum.mapper;
+package br.uniceub.rpg.comum.mapper;
 
 import java.util.List;
 
