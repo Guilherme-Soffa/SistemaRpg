@@ -36,8 +36,11 @@ export class LoginUsuarioComponent implements OnInit {
     if(this.form.valid){
       this.trataDados();
       this.cadastroUsuarioService.logarUsuario(this.trataDados()).subscribe(r=>{
-        this.router.navigate(["/acompanhamento"],{ queryParams: { usuario: r.id } });
-        console.log(r,'agoissss')
+        this.router.navigate(["/acompanhamento"],{
+            queryParams: {
+              usuario: r.id
+            }
+          });
       });
     }
   }

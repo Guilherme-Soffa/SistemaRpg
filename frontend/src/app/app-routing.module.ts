@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AcompanhamentoComponent } from './acompanhamento/acompanhamento.component';
 import { CadastroUsuarioComponent } from './cadastro-usuario/cadastro-usuario.component';
+import { FichaComponent } from './ficha/ficha.component';
 import { LoginUsuarioComponent } from './login-usuario/login-usuario.component';
 
 const routes: Routes = [
@@ -22,6 +23,10 @@ const routes: Routes = [
   {
     path: "acompanhamento",
     component: AcompanhamentoComponent,
+  },
+  {
+    path: "ficha",
+    component: FichaComponent,
   },
 ];
 

@@ -1,0 +1,45 @@
+<form [formGroup]="form">
+  <mat-form-field class="form-field" appearance="outline">
+    <mat-select formControlName="raca" placeholder="Seleciona a sua Raça">
+      <mat-option>Selecione</mat-option>
+      <mat-option *ngFor="let item of raca" [value]="item.id">
+        {{ item.raca }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</form>
+
+<form [formGroup]="form">
+  <mat-form-field class="form-field" appearance="outline">
+    <mat-select formControlName="classe" placeholder="Seleciona a sua Classe">
+      <mat-option>Selecione</mat-option>
+      <mat-option *ngFor="let item of classe" [value]="item.id">
+        {{ item.classe }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</form>
+
+<form [formGroup]="form">
+  <mat-form-field class="form-field" appearance="outline">
+    <mat-select formControlName="antecedente" placeholder="Seleciona a seu Antecedente">
+      <mat-option>Selecione</mat-option>
+      <mat-option *ngFor="let item of antecedente" [value]="item.value">
+        {{ item.label }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</form>
+
+<form [formGroup]="form">
+  <mat-form-field class="form-field" appearance="outline">
+    <mat-select formControlName="origem" placeholder="Seleciona a sua Origem">
+      <mat-option>Selecione</mat-option>
+      <mat-option *ngFor="let item of origem" [value]="item.value">
+        {{ item.label }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</form>
+
+<button type="submit" class="botaoEnviar" (click)="submit()">Login</button>
