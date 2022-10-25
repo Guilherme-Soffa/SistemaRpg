@@ -1,9 +1,9 @@
 <form [formGroup]="form">
   <mat-form-field class="form-field" appearance="outline">
-    <mat-select formControlName="raca" placeholder="Seleciona a sua Raça">
+    <mat-select formControlName="raca" (selectionChange)="buscaOrigemAntecedente($event)" placeholder="Seleciona a sua Raça">
       <mat-option>Selecione</mat-option>
-      <mat-option *ngFor="let item of raca" [value]="item.id">
-        {{ item.raca }}
+      <mat-option *ngFor="let raca of racas" [value]="raca">
+        {{ raca.raca }}
       </mat-option>
     </mat-select>
   </mat-form-field>
@@ -11,10 +11,10 @@
 
 <form [formGroup]="form">
   <mat-form-field class="form-field" appearance="outline">
-    <mat-select formControlName="classe" placeholder="Seleciona a sua Classe">
+    <mat-select formControlName="classe" (selectionChange)="buscaOrigemAntecedente($event)" placeholder="Seleciona a sua Classe">
       <mat-option>Selecione</mat-option>
-      <mat-option *ngFor="let item of classe" [value]="item.id">
-        {{ item.classe }}
+      <mat-option *ngFor="let classe of classes" [value]="classe">
+        {{ classe.classe }}
       </mat-option>
     </mat-select>
   </mat-form-field>
@@ -42,4 +42,5 @@
   </mat-form-field>
 </form>
 
-<button type="submit" class="botaoEnviar" (click)="submit()">Login</button>
+<button type="submit" class="botaoEnviar" (click)="submit()">Cadastrar Nova Ficha</button>
+<button class="botaoEnviar" (click)="voltar()">Voltar</button>

@@ -10,4 +10,5 @@ import lombok.*;
 public class ClasseDTO {
     Long id;
     String classe;
+    String descricao;
 }

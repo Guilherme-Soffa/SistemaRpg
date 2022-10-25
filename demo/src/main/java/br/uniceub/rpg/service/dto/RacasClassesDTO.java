@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
 @Builder
@@ -15,17 +16,24 @@ public class RacasClassesDTO {
     List<RacaDTO> racas;
     List<ClasseDTO> classes;
 
-    //Construtor
-    public RacasClassesDTO(List<Raca> racas, List<Classe> classes) {
-        this.racas = new ArrayList<>();
-        this.classes = new ArrayList<>();
+
+    public static RacasClassesDTO toDTO(List<Raca> racas, List<Classe> classes){
+        RacasClassesDTO racasClassesDTO = new RacasClassesDTO();
+
+        List<RacaDTO> racasDTO = new ArrayList<>();
+        List<ClasseDTO> classesDTO = new ArrayList<>();
 
         racas.forEach(r->{
-            this.racas.add(new RacaDTO(r.getId(), r.getRaca(), r.getDescricao()));
+            racasDTO.add(new RacaDTO(r.getId(), r.getRaca(), r.getDescricao()));
+        });
+        classes.forEach(r->{
+            classesDTO.add(new ClasseDTO(r.getId(), r.getClasse(), r.getDescricao()));
         });
 
-        classes.forEach(r->{
-            this.classes.add(new ClasseDTO(r.getId(), r.getClasse()));
-        });
+        racasClassesDTO.setRacas(racasDTO);
+        racasClassesDTO.setClasses(classesDTO);
+
+        return racasClassesDTO;
     }
+
 }

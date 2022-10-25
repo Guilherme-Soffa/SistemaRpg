@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { FichaDTO } from 'src/modules/ficha-dto';
 import { AcompanhamentoService } from '../service/acompanhamento.service';
 
@@ -21,12 +21,15 @@ export class AcompanhamentoComponent implements OnInit {
   origem: string = 'teste4';
   antecedente: string = 'teste5';
 	activedRoute: ActivatedRoute;
+	router: Router;
 
   constructor(
 	  activedRoute: ActivatedRoute,
     private acompanhamentoService: AcompanhamentoService,
+    router: Router,
   ) {
     this.activedRoute = activedRoute;
+    this.router = router;
   }
 
   ngOnInit(): void {
@@ -38,6 +41,12 @@ export class AcompanhamentoComponent implements OnInit {
 		});
 
   }
+
+
+  async redirectToFichas(){
+    await this.router.navigate(["/ficha"]);
+  }
+
   submit(){
     console.log('paramsssssssss');
   }

@@ -15,7 +15,6 @@ public class FichaService {
 
     public RacasClassesDTO buscarRacaClasse(){
         //Busca as informações no banco e retorna
-//        return new RacasClassesDTO(this.racaRepository.findAll(), this.classeRepository.findAll());
-        return null;
+        return RacasClassesDTO.toDTO(this.racaRepository.findAll(), this.classeRepository.findAll());
     };
 }
