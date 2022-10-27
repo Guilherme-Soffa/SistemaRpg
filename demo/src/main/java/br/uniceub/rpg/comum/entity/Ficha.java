@@ -19,18 +19,38 @@ public class Ficha {
     private Long id;
 
     @Column(name = "fk_usuario")
-    private String usuario;
+    private Long idUsuario;
 
     @Column(name = "fk_raca")
-    private String raca;
+    private Long idRaca;
 
     @Column(name = "fk_classe")
-    private String classe;
+    private Long idClasse;
 
     @Column(name = "fk_antecedente")
-    private String antecedente;
+    private Long idAntecedente;
 
     @Column(name = "fk_origem")
-    private String origem;
+    private Long idOrigem;
+
+    @ManyToOne
+    @JoinColumn(name = "fk_usuario", insertable = false, updatable = false)
+    private Usuario usuario;
+
+    @ManyToOne
+    @JoinColumn(name = "fk_raca", insertable = false, updatable = false)
+    private Raca raca;
+
+    @ManyToOne
+    @JoinColumn(name = "fk_classe", insertable = false, updatable = false)
+    private Classe classe;
+
+    @ManyToOne
+    @JoinColumn(name = "fk_antecedente", insertable = false, updatable = false)
+    private Antecedente antecedente;
+
+    @ManyToOne
+    @JoinColumn(name = "fk_origem", insertable = false, updatable = false)
+    private Origem origem;
 
 }

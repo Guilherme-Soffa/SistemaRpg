@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { UsuarioDTO } from '../../modules/usuario-dto';
 import { CadastroUsuarioService } from '../service/cadastro-usuario.service';
 
@@ -11,11 +12,15 @@ import { CadastroUsuarioService } from '../service/cadastro-usuario.service';
 export class CadastroUsuarioComponent implements OnInit {
 
   form: FormGroup;
+  router: Router;
 
   constructor(
+    router: Router,
     readonly formBuilder: FormBuilder,
     private cadastroUsuarioService: CadastroUsuarioService,
-  ) { }
+  ) {
+    this.router = router;
+   }
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
@@ -27,8 +32,9 @@ export class CadastroUsuarioComponent implements OnInit {
     this.form.markAllAsTouched();
     if(this.form.valid){
       this.trataDados();
-      this.cadastroUsuarioService.cadastrarUsuario(this.trataDados()).subscribe();
-      console.log('enviado!',this.trataDados())
+      this.cadastroUsuarioService.cadastrarUsuario(this.trataDados()).subscribe(r=>{
+        this.router.navigate(["/login"])
+      });
     }
   }
   trataDados(): UsuarioDTO{

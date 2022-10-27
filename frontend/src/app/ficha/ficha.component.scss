@@ -1,0 +1,51 @@
+
+form{
+  text-align: center;
+  size: 30px;
+  border-radius: 3px;
+}
+.form-field{
+  background-color: white;
+  text-decoration-color: black;
+  width: 300px;
+}
+a{
+  text-size-adjust: 80px;
+  margin: auto;
+  height: 50px;
+  width: 300px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 1px 2px 2px rgba(21, 122, 161, 0.452);
+  background-color: #2ead58;
+  color: #1511e0;
+  transition: filter 0.2s;
+  width: 50;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5px;
+  margin-bottom: 30px;
+}
+body{
+  background-image: url(../imagens/mapa.jfif);
+  background-position: center center;
+  overflow: hidden;
+}
+.botaoEnviar {
+  height: 50px;
+  width: 150px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 1px 2px 2px rgb(0 0 0 / 10%);
+  background-color: #0c2c57;
+  color: #ffffff;
+  transition: filter 0.2s;
+  width: 50;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5px;
+}

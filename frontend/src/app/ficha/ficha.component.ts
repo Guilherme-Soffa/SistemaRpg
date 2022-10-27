@@ -1,14 +1,14 @@
+import { OrigemDTO } from './../../modules/origem-dto';
+import { AntecedenteDTO } from './../../modules/antecedente-dto';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ClasseDTO } from 'src/modules/classe-dto';
 import { RacaDTO } from 'src/modules/raca-dto';
 import { FichaService } from '../service/ficha.service';
+import { UsuarioDTO } from 'src/modules/usuario-dto';
+import { FichaDTO } from 'src/modules/ficha-dto';
 
-interface item {
-  value: string;
-  label: string;
-}
 
 @Component({
   selector: 'app-ficha',
@@ -19,29 +19,24 @@ export class FichaComponent implements OnInit {
 
 
 	router: Router;
+  personagem: string;
   racas: RacaDTO[] = [];
   classes: ClasseDTO[] = [];
-
-  origem: item[] =[
-    {value: '1', label: 'huaaaaaaaaaaaaaaaaamano B'},
-    {value: '2', label: 'eqwe lua'},
-    {value: '3', label: 'dd'},
-  ]
-
-  antecedente: item[] =[
-    {value: '1', label: 'das B'},
-    {value: '2', label: 'das lua'},
-    {value: '3', label: 'ddd'},
-  ]
-
+  origens: OrigemDTO[] = [];
+  antecedentes: AntecedenteDTO[] = [];
+  activedRoute: ActivatedRoute;
+  usuarioId: number;
+  racaSelecionada: RacaDTO;
+  classeSelecionada: ClasseDTO;
   form: FormGroup;
-  selected = 'option2';
 
   constructor(
+    activedRoute: ActivatedRoute,
     readonly formBuilder: FormBuilder,
     private fichaService: FichaService,
     router: Router,
   ) {
+    this.activedRoute = activedRoute;
     this.router = router;
   }
 
@@ -51,42 +46,61 @@ export class FichaComponent implements OnInit {
       classe: [null, Validators.required],
       antecedente: [null, Validators.required],
       origem: [null, Validators.required],
+      personagem: [null, Validators.required],
     })
 
     this.fichaService.buscarRacaClasse().subscribe(r=>{
       this.racas = r.racas
       this.classes = r.classes
     });
+
+    this.activedRoute.queryParams.subscribe(params => {
+      this.usuarioId = params.usuario;
+		});
   }
 
   submit(){
-    console.log('teste',this.trataDados())
+    console.log(this.trataDados())
+    this.fichaService.cadastrarFicha(this.trataDados()).subscribe(r=>{
+      this.router.navigate(["/acompanhamento"],{
+        queryParams: {
+          usuario: this.usuarioId
+        }
+      });
+    });
   }
 
   async voltar(){
-    await this.router.navigate(["/acompanhamento"]);
+    await this.router.navigate(["/acompanhamento"],{
+      queryParams: {
+        usuario: this.usuarioId
+      }
+    });
   }
 
-  trataDados(){
+  trataDados(): FichaDTO{
     const dados =  this.form.controls;
+    const usuario: UsuarioDTO = {
+      id: this.usuarioId,
+      usuario: '',
+      password:'',
+    }
+    return {
+      usuario: usuario,
+      raca: dados.raca.value,
+      classe: dados.classe.value,
+      origem: dados.origem.value,
+      antecedente: dados.antecedente.value,
+    }as FichaDTO;
 
   }
 
   buscaOrigemAntecedente(event: any){
-    console.log(event)
-    let racaSelecionada: RacaDTO;
-    let classeSelecionada: ClasseDTO;
-    if(event.value == raca){
-      racaSelecionada = event.value;
+    if(this.form.controls.raca.value != null && this.form.controls.classe.value != null ){
+      this.fichaService.buscarOrigemAntecedente(this.form.controls.raca.value, this.form.controls.classe.value).subscribe(r=>{
+        this.origens = r.origens;
+        this.antecedentes = r.antecedentes;
+      })
     }
-    if(event.value == classe){
-      classeSelecionada = event.value;
-    }
-    if(classeSelecionada != null && racaSelecionada != null){
-
-    }//pensei em fazer assim, mas eu tbm pensei em divir para n desobedecer
-    //aquela "regra" onde uma função nao deve fazer mais q uma coisa,
-    // mas eu n sei como q eu faria essa busca em outro lugar
   }
-
 }

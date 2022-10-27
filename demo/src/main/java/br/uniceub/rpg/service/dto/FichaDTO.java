@@ -8,9 +8,10 @@ import lombok.*;
 @Setter
 @Builder
 public class FichaDTO {
+    UsuarioDTO usuario;
     String personagem;
-    String classe;
-    String raca;
-    String origem;
-    String antecedente;
+    ClasseDTO classe;
+    RacaDTO raca;
+    OrigemDTO origem;
+    AntecedenteDTO antecedente;
 }

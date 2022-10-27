@@ -1,46 +1,57 @@
-<form [formGroup]="form">
-  <mat-form-field class="form-field" appearance="outline">
-    <mat-select formControlName="raca" (selectionChange)="buscaOrigemAntecedente($event)" placeholder="Seleciona a sua Raça">
-      <mat-option>Selecione</mat-option>
-      <mat-option *ngFor="let raca of racas" [value]="raca">
-        {{ raca.raca }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-</form>
+<body>
+  <a style="display: flex; justify-content: center; align-items: center;">Criação de Personagem</a>
 
-<form [formGroup]="form">
-  <mat-form-field class="form-field" appearance="outline">
-    <mat-select formControlName="classe" (selectionChange)="buscaOrigemAntecedente($event)" placeholder="Seleciona a sua Classe">
-      <mat-option>Selecione</mat-option>
-      <mat-option *ngFor="let classe of classes" [value]="classe">
-        {{ classe.classe }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-</form>
+  <form [formGroup]="form">
+    <mat-form-field appearance="fill">
+      <input formControlName="personagem" matInput>
+    </mat-form-field>
+  </form>
+  
+  <form [formGroup]="form">
+    <mat-form-field class="form-field" appearance="outline">
+      <mat-select formControlName="raca" (selectionChange)="buscaOrigemAntecedente($event)" placeholder="Seleciona a sua Raça">
+        <mat-option>Selecione</mat-option>
+        <mat-option *ngFor="let raca of racas" [value]="raca">
+          {{ raca.raca }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
 
-<form [formGroup]="form">
-  <mat-form-field class="form-field" appearance="outline">
-    <mat-select formControlName="antecedente" placeholder="Seleciona a seu Antecedente">
-      <mat-option>Selecione</mat-option>
-      <mat-option *ngFor="let item of antecedente" [value]="item.value">
-        {{ item.label }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-</form>
+  <form [formGroup]="form">
+    <mat-form-field class="form-field" appearance="outline">
+      <mat-select formControlName="classe" (selectionChange)="buscaOrigemAntecedente($event)" placeholder="Seleciona a sua Classe">
+        <mat-option>Selecione</mat-option>
+        <mat-option *ngFor="let classe of classes" [value]="classe">
+          {{ classe.classe }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
 
-<form [formGroup]="form">
-  <mat-form-field class="form-field" appearance="outline">
-    <mat-select formControlName="origem" placeholder="Seleciona a sua Origem">
-      <mat-option>Selecione</mat-option>
-      <mat-option *ngFor="let item of origem" [value]="item.value">
-        {{ item.label }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-</form>
+  <form [formGroup]="form">
+    <mat-form-field class="form-field" appearance="outline">
+      <mat-select formControlName="antecedente" placeholder="Seleciona a seu Antecedente">
+        <mat-option>Selecione</mat-option>
+        <mat-option *ngFor="let antecedente of antecedentes" [value]="antecedente">
+          {{ antecedente.antecedente }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
 
-<button type="submit" class="botaoEnviar" (click)="submit()">Cadastrar Nova Ficha</button>
-<button class="botaoEnviar" (click)="voltar()">Voltar</button>
+  <form [formGroup]="form">
+    <mat-form-field class="form-field" appearance="outline">
+      <mat-select formControlName="origem" placeholder="Seleciona a sua Origem">
+        <mat-option>Selecione</mat-option>
+        <mat-option *ngFor="let origem of origens" [value]="origem">
+          {{ origem.origem }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+
+  <button type="submit" class="botaoEnviar" (click)="submit()">Cadastrar Nova Ficha</button>
+  <button class="botaoEnviar" (click)="voltar()">Voltar</button>
+
+</body>

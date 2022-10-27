@@ -7,8 +7,9 @@ import lombok.*;
 @Getter
 @Setter
 @Builder
-public class UsuarioDTO {
+public class AntecedenteDTO {
+
     Long id;
-    String usuario;
-    String password;
+    String antecedente;
+    String descricao;
 }

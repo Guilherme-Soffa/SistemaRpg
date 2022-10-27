@@ -1,12 +1,9 @@
 package br.uniceub.rpg.service.repository;
 
-import br.uniceub.rpg.comum.entity.Ficha;
+import br.uniceub.rpg.comum.entity.AntecedenteRacaClasse;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.Optional;
-
 @Repository
-public interface AcompanhamentoRepository  extends JpaRepository<Ficha, Long> {
-
+public interface AntecedenteRacaClasseRepository extends JpaRepository<AntecedenteRacaClasse, Long> {
 }

@@ -6,8 +6,8 @@ import { FichaDTO } from "src/modules/ficha-dto";
 export class AcompanhamentoService {
 	constructor(private readonly http: HttpClient) {}
 
-  buscarFichas(id: number): Observable<FichaDTO> {
-    return this.http.get<FichaDTO>(`/api/buscar-fichas/${id}`);
+  buscarFichas(id: number): Observable<FichaDTO[]> {
+    return this.http.get<FichaDTO[]>(`/api/buscar-fichas/${id}`);
   }
 
 }

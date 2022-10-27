@@ -1,7 +1,12 @@
+import { UsuarioDTO } from './../../modules/usuario-dto';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { FichaDTO } from 'src/modules/ficha-dto';
 import { AcompanhamentoService } from '../service/acompanhamento.service';
+import { AntecedenteDTO } from 'src/modules/antecedente-dto';
+import { OrigemDTO } from 'src/modules/origem-dto';
+import { RacaDTO } from 'src/modules/raca-dto';
+import { ClasseDTO } from 'src/modules/classe-dto';
 
 
 @Component({
@@ -12,14 +17,13 @@ import { AcompanhamentoService } from '../service/acompanhamento.service';
 
 
 export class AcompanhamentoComponent implements OnInit {
-
-
-
-  personagem: string = 'teste1';
-  classe: string = 'teste2';
-  raca: string = 'teste3';
-  origem: string = 'teste4';
-  antecedente: string = 'teste5';
+  usuario: UsuarioDTO;
+  personagem: string[];
+  classe: ClasseDTO[];
+  raca: RacaDTO[];
+  origem: OrigemDTO[];
+  antecedente: AntecedenteDTO[];
+  fichas: FichaDTO[];
 	activedRoute: ActivatedRoute;
 	router: Router;
 
@@ -34,17 +38,26 @@ export class AcompanhamentoComponent implements OnInit {
 
   ngOnInit(): void {
     this.activedRoute.queryParams.subscribe(params => {
-      this.acompanhamentoService.buscarFichas(params.id).subscribe((r: FichaDTO) =>{
-        const a = r
+      this.usuario = params.usuario;
+      this.acompanhamentoService.buscarFichas(params.usuario).subscribe((fichas: FichaDTO[]) =>{
+        this.fichas = fichas;
+        // fichas.forEach(ficha =>{
+        //   this.classe.push(ficha.classe);
+        //   this.raca.push(ficha.raca);
+        //   this.antecedente.push(ficha.antecedente);
+        //   this.origem.push(ficha.origem);
+        // })
       })
-			console.log('if', params)
 		});
-
   }
 
 
   async redirectToFichas(){
-    await this.router.navigate(["/ficha"]);
+    await this.router.navigate(["/ficha"],{
+      queryParams: {
+        usuario: this.usuario
+      }
+    });
   }
 
   submit(){
