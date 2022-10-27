@@ -75,3 +75,18 @@ body{
   background-position: center center;
   overflow: hidden;
 }
+.botaoLogin{
+  height: 50px;
+  width: 150px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 1px 2px 2px rgb(0 0 0 / 10%);
+  background-color: rgb(250, 81, 81);
+  color: white;
+  transition: filter 0.2s;
+  margin-right: 5px;
+  float: right;
+  &:hover {
+    filter: brightness(0.9);
+  }
+}

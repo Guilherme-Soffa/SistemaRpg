@@ -27,7 +27,7 @@ export class AcompanhamentoComponent implements OnInit {
 	activedRoute: ActivatedRoute;
 	router: Router;
 
-  displayedColumns: string[] = ['personagem', 'raca', 'classe', 'origem', 'antecedente'];
+  displayedColumns: string[] = ['personagem', 'raca', 'classe', 'antecedente', 'origem'];
   dataSource: FichaDTO[] = [];
 
   constructor(
@@ -58,6 +58,10 @@ export class AcompanhamentoComponent implements OnInit {
         usuario: this.usuario
       }
     });
+  }
+
+  async redirectToLogin(){
+    await this.router.navigate(["/login"]);
   }
 
   async redirectToListagem(){
