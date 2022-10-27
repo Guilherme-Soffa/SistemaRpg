@@ -51,7 +51,9 @@
     </mat-form-field>
   </form>
 
-  <button type="submit" class="botaoEnviar" (click)="submit()">Cadastrar Nova Ficha</button>
-  <button class="botaoEnviar" (click)="voltar()">Voltar</button>
+  <div class="botao">
+    <button class="botaoVoltar" (click)="voltar()">Voltar</button>
+    <button type="submit" class="botaoEnviar" (click)="submit()">Cadastrar Nova Ficha</button>
+  </div>
 
 </body>

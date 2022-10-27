@@ -32,7 +32,8 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
 
-
-  <button class="botaoEnviar" (click)="redirectToFichas()">Nova Ficha</button>
-  <button class="botaoEnviar" (click)="redirectToListagem()">Listagem dos Dados</button>
-  </body>
+  <div class="botao">
+    <button class="botaoVoltar" (click)="redirectToListagem()">Listagem dos Dados</button>
+    <button class="botaoEnviar" (click)="redirectToFichas()">Nova Ficha</button>
+  </div>
+</body>

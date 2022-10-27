@@ -15,7 +15,7 @@ th, td {
   padding: 8px;
 }
 
-.botaoEnviar{
+.botaoEnviar {
   height: 50px;
   width: 150px;
   border: none;
@@ -24,16 +24,33 @@ th, td {
   background-color: #0c2c57;
   color: #ffffff;
   transition: filter 0.2s;
-  width: 50;
+  &:hover {
+    filter: brightness(0.9);
+  }
+}
+
+.botaoVoltar {
+  height: 50px;
+  width: 150px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 1px 2px 2px rgb(0 0 0 / 10%);
+  background-color: white;
+  color: #0c2c57;
+  transition: filter 0.2s;
+  margin-right: 5px;
+  &:hover {
+    filter: brightness(0.9);
+  }
+}
+.botao{
   margin: auto;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 5px;
-  &:hover {
-      filter: brightness(0.9);
 }
-}
+
 a{
   text-size-adjust: 80px;
   margin: auto;

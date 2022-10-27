@@ -1,8 +1,8 @@
+
 form{
   text-align: center;
   size: 30px;
   border-radius: 3px;
-
 }
 .form-field{
   background-color: white;
@@ -42,7 +42,26 @@ body{
   background-color: #0c2c57;
   color: #ffffff;
   transition: filter 0.2s;
-  width: 50;
+  &:hover {
+    filter: brightness(0.9);
+  }
+}
+
+.botaoVoltar {
+  height: 50px;
+  width: 150px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 1px 2px 2px rgb(0 0 0 / 10%);
+  background-color: white;
+  color: #0c2c57;
+  transition: filter 0.2s;
+  margin-right: 5px;
+  &:hover {
+    filter: brightness(0.9);
+  }
+}
+.botao{
   margin: auto;
   display: flex;
   justify-content: center;
