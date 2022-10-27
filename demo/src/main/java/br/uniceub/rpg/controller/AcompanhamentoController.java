@@ -3,6 +3,7 @@ package br.uniceub.rpg.controller;
 import br.uniceub.rpg.comum.entity.Ficha;
 import br.uniceub.rpg.comum.entity.Usuario;
 import br.uniceub.rpg.service.AcompanhamentoService;
+import br.uniceub.rpg.service.dto.DadosBancoDTO;
 import br.uniceub.rpg.service.dto.FichaDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -23,8 +24,14 @@ public class AcompanhamentoController {
 
     @GetMapping("buscar-fichas/{id}")
     @PreAuthorize("isAuthenticated()")
-    public ResponseEntity<List<FichaDTO>> logarUsuario(@PathVariable("id") Long id){
+    public ResponseEntity<List<FichaDTO>> buscarFichas(@PathVariable("id") Long id){
         return ResponseEntity.ok(this.acompanhamentoService.Buscar(id));
+    };
+
+    @GetMapping("buscar-dados-banco")
+    @PreAuthorize("isAuthenticated()")
+    public ResponseEntity<DadosBancoDTO> buscarDadosBanco(){
+        return ResponseEntity.ok(this.acompanhamentoService.BuscarDadosBanco());
     };
 
 }

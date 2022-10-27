@@ -13,7 +13,12 @@ import javax.persistence.*;
 @Builder
 public class OrigemRacaClasse {
 
+
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "pk_rl_origem")
+    private Long id;
+
     @Column(name = "fk_origem")
     private Long idOrigem;
 

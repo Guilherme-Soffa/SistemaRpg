@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UsuarioDTO } from '../../modules/usuario-dto';
 import { CadastroUsuarioService } from '../service/cadastro-usuario.service';
+import { NotificationService } from '../service/notification.service';
 
 @Component({
   selector: 'app-cadastro-usuario',
@@ -18,6 +19,7 @@ export class CadastroUsuarioComponent implements OnInit {
     router: Router,
     readonly formBuilder: FormBuilder,
     private cadastroUsuarioService: CadastroUsuarioService,
+    private notificationService: NotificationService,
   ) {
     this.router = router;
    }
@@ -34,6 +36,7 @@ export class CadastroUsuarioComponent implements OnInit {
       this.trataDados();
       this.cadastroUsuarioService.cadastrarUsuario(this.trataDados()).subscribe(r=>{
         this.router.navigate(["/login"])
+        this.notificationService.sucesso('Usuario Cadastrado com Sucesso!')
       });
     }
   }

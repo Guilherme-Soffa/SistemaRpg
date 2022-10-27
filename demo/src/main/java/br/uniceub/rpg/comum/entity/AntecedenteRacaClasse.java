@@ -11,7 +11,12 @@ import javax.persistence.*;
 @Setter
 @Builder
 public class AntecedenteRacaClasse {
+
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "pk_rl_antecedente")
+    private Long id;
+
     @Column(name = "fk_antecedente")
     private Long idAntecedente;
 

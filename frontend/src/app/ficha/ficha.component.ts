@@ -1,3 +1,4 @@
+import { NotificationService } from './../service/notification.service';
 import { OrigemDTO } from './../../modules/origem-dto';
 import { AntecedenteDTO } from './../../modules/antecedente-dto';
 import { Component, OnInit } from '@angular/core';
@@ -34,6 +35,7 @@ export class FichaComponent implements OnInit {
     activedRoute: ActivatedRoute,
     readonly formBuilder: FormBuilder,
     private fichaService: FichaService,
+    private notificationService: NotificationService,
     router: Router,
   ) {
     this.activedRoute = activedRoute;
@@ -61,13 +63,19 @@ export class FichaComponent implements OnInit {
 
   submit(){
     console.log(this.trataDados())
-    this.fichaService.cadastrarFicha(this.trataDados()).subscribe(r=>{
-      this.router.navigate(["/acompanhamento"],{
-        queryParams: {
-          usuario: this.usuarioId
-        }
+    if(this.form.valid){
+      this.fichaService.cadastrarFicha(this.trataDados()).subscribe(r=>{
+        this.notificationService.sucesso('Cadastro de ficha realisado com sucesso!')
+        this.router.navigate(["/acompanhamento"],{
+          queryParams: {
+            usuario: this.usuarioId
+          }
+        });
       });
-    });
+    } else{
+      this.form.markAllAsTouched();
+      this.notificationService.erro('Preencha todos os campos obrigatórios')
+    }
   }
 
   async voltar(){
@@ -87,6 +95,7 @@ export class FichaComponent implements OnInit {
     }
     return {
       usuario: usuario,
+      personagem: dados.personagem.value,
       raca: dados.raca.value,
       classe: dados.classe.value,
       origem: dados.origem.value,

@@ -36,6 +36,7 @@ public class FichaService {
         ficha.setIdOrigem(fichaDTO.getOrigem().getId());
         ficha.setIdUsuario(fichaDTO.getUsuario().getId());
         ficha.setIdRaca(fichaDTO.getRaca().getId());
+        ficha.setNomePersonagem(fichaDTO.getPersonagem());
         return this.fichaRepository.save(ficha);
     }
 }

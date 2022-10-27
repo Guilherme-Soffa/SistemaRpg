@@ -6,8 +6,7 @@ import br.uniceub.rpg.comum.exception.NegocioException;
 import br.uniceub.rpg.comum.mapper.*;
 import br.uniceub.rpg.service.dto.*;
 //import br.uniceub.rpg.service.repository.AcompanhamentoRepository;
-import br.uniceub.rpg.service.repository.AcompanhamentoRepository;
-import br.uniceub.rpg.service.repository.FichaRepository;
+import br.uniceub.rpg.service.repository.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
@@ -21,7 +20,12 @@ import java.util.Optional;
 public class AcompanhamentoService{
 
     private final FichaRepository fichaRepository;
-    private final FichaMapper fichaMapper;
+
+    private final AntecedenteRepository antecedenteRepository;
+    private final ClasseRepository classeRepository;
+    private final OrigemRepository origemRepository;
+    private final RacaRepository racaRepository;
+
     private final AntecedenteMapper antecedenteMapper;
     private final OrigemMapper origemMapper;
     private final RacaMapper racaMapper;
@@ -43,8 +47,8 @@ public class AcompanhamentoService{
              fichaDTO.setClasse(classeDTO);
              fichaDTO.setOrigem(origemDTO);
              fichaDTO.setRaca(racaDTO);
-//             fichaDTO.setPersonagem();
-            fichasDTO.add(fichaDTO);
+             fichaDTO.setPersonagem(ficha.getNomePersonagem());
+             fichasDTO.add(fichaDTO);
         });
 
         if(fichasDTO.size() > 0){
@@ -52,5 +56,22 @@ public class AcompanhamentoService{
         }else {
             throw new NegocioException(this.getClass().getName(), "Nenhuma ficha encontrada!");
         }
+    }
+
+    public DadosBancoDTO BuscarDadosBanco(){
+
+        DadosBancoDTO dadosDTO = new DadosBancoDTO();
+        List<AntecedenteDTO> antecedenteDTO = this.antecedenteMapper.toDto(this.antecedenteRepository.findAll());
+        List<ClasseDTO> classeDTO = this.classeMapper.toDto( this.classeRepository.findAll());
+        List<OrigemDTO> origemDTO = this.origemMapper.toDto(this.origemRepository.findAll());
+        List<RacaDTO> racaDTO = this.racaMapper.toDto(this.racaRepository.findAll());
+
+        dadosDTO.setAntecedente(antecedenteDTO);
+        dadosDTO.setClasse(classeDTO);
+        dadosDTO.setOrigem(origemDTO);
+        dadosDTO.setRaca(racaDTO);
+
+        return dadosDTO;
+
     }
 }

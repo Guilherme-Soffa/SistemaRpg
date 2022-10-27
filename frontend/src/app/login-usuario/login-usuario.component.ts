@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UsuarioDTO } from 'src/modules/usuario-dto';
 import { CadastroUsuarioService } from '../service/cadastro-usuario.service';
+import { NotificationService } from '../service/notification.service';
 
 @Component({
   selector: 'app-login-usuario',
@@ -19,6 +20,7 @@ export class LoginUsuarioComponent implements OnInit {
     readonly formBuilder: FormBuilder,
     private cadastroUsuarioService: CadastroUsuarioService,
 	  router: Router,
+    private notificationService: NotificationService,
     ) {
 
     this.router = router;
@@ -36,6 +38,7 @@ export class LoginUsuarioComponent implements OnInit {
     if(this.form.valid){
       this.trataDados();
       this.cadastroUsuarioService.logarUsuario(this.trataDados()).subscribe(r=>{
+        this.notificationService.sucesso('Usuario Logado!')
         this.router.navigate(["/acompanhamento"],{
             queryParams: {
               usuario: r.id

@@ -33,6 +33,9 @@ public class Ficha {
     @Column(name = "fk_origem")
     private Long idOrigem;
 
+    @Column(name = "no_personagem")
+    private String nomePersonagem;
+
     @ManyToOne
     @JoinColumn(name = "fk_usuario", insertable = false, updatable = false)
     private Usuario usuario;

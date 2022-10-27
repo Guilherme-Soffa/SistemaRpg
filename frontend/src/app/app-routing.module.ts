@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AcompanhamentoComponent } from './acompanhamento/acompanhamento.component';
 import { CadastroUsuarioComponent } from './cadastro-usuario/cadastro-usuario.component';
 import { FichaComponent } from './ficha/ficha.component';
+import { ListagemBancoComponent } from './listagem-banco/listagem-banco.component';
 import { LoginUsuarioComponent } from './login-usuario/login-usuario.component';
 
 const routes: Routes = [
@@ -27,6 +28,10 @@ const routes: Routes = [
   {
     path: "ficha",
     component: FichaComponent,
+  },
+  {
+    path: "listagem-banco",
+    component: ListagemBancoComponent,
   },
 ];
 

@@ -2,11 +2,11 @@
   <a style="display: flex; justify-content: center; align-items: center;">Criação de Personagem</a>
 
   <form [formGroup]="form">
-    <mat-form-field appearance="fill">
-      <input formControlName="personagem" matInput>
+    <mat-form-field class="form-field" appearance="fill">
+      <input formControlName="personagem" matInput placeholder="Nome do Personagem">
     </mat-form-field>
   </form>
-  
+
   <form [formGroup]="form">
     <mat-form-field class="form-field" appearance="outline">
       <mat-select formControlName="raca" (selectionChange)="buscaOrigemAntecedente($event)" placeholder="Seleciona a sua Raça">
