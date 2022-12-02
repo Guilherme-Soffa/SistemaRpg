@@ -38,10 +38,15 @@ public class AcompanhamentoService{
         List<FichaDTO> fichasDTO = new ArrayList<>();
         fichas.forEach(ficha -> {
             FichaDTO fichaDTO = new FichaDTO();
-            AntecedenteDTO antecedenteDTO = this.antecedenteMapper.toDto(ficha.getAntecedente());
-            ClasseDTO classeDTO = this.classeMapper.toDto(ficha.getClasse());
-            OrigemDTO origemDTO = this.origemMapper.toDto(ficha.getOrigem());
-            RacaDTO racaDTO = this.racaMapper.toDto(ficha.getRaca());
+            fichaDTO.setId(ficha.getId());
+            AntecedenteDTO antecedenteDTO = new AntecedenteDTO();
+            antecedenteDTO.setAntecedente(ficha.getAntecedente().getAntecedente());
+            ClasseDTO classeDTO = new ClasseDTO();
+            classeDTO.setClasse(ficha.getClasse().getClasse());
+            OrigemDTO origemDTO = new OrigemDTO();
+            origemDTO.setOrigem(ficha.getOrigem().getOrigem());
+            RacaDTO racaDTO = new RacaDTO();
+            racaDTO.setRaca(ficha.getRaca().getRaca());
 
              fichaDTO.setAntecedente(antecedenteDTO);
              fichaDTO.setClasse(classeDTO);
@@ -62,7 +67,7 @@ public class AcompanhamentoService{
 
         DadosBancoDTO dadosDTO = new DadosBancoDTO();
         List<AntecedenteDTO> antecedenteDTO = this.antecedenteMapper.toDto(this.antecedenteRepository.findAll());
-        List<ClasseDTO> classeDTO = this.classeMapper.toDto( this.classeRepository.findAll());
+        List<ClasseDTO> classeDTO = this.classeMapper.toDto(this.classeRepository.findAll());
         List<OrigemDTO> origemDTO = this.origemMapper.toDto(this.origemRepository.findAll());
         List<RacaDTO> racaDTO = this.racaMapper.toDto(this.racaRepository.findAll());
 
@@ -72,6 +77,9 @@ public class AcompanhamentoService{
         dadosDTO.setRaca(racaDTO);
 
         return dadosDTO;
+    }
 
+    public void DeletarFicha(Long id){
+        this.fichaRepository.deleteById(id);
     }
 }

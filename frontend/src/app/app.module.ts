@@ -9,7 +9,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { AcompanhamentoComponent } from './acompanhamento/acompanhamento.component';
-
+import {MatIconModule} from '@angular/material/icon';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CadastroUsuarioComponent } from './cadastro-usuario/cadastro-usuario.component';
@@ -37,6 +37,7 @@ import { ListagemBancoComponent } from './listagem-banco/listagem-banco.componen
     MatFormFieldModule,
     MatInputModule,
     MatTableModule,
+    MatIconModule,
     ToastrModule.forRoot(),
   ],
   providers: [{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'fill'}}],

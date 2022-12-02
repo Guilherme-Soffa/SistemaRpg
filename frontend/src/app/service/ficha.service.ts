@@ -22,4 +22,7 @@ export class FichaService {
     return this.http.post<FichaDTO>(`/api/cadastrar-ficha`,ficha);
   }
 
+  apiElfica(): Observable<void>{
+    return this.http.get<void>(`https://api.fungenerators.com/name/generate?category=elf&limit=20`);
+  }
 }

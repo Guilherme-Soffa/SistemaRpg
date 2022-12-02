@@ -27,9 +27,11 @@ export class FichaComponent implements OnInit {
   antecedentes: AntecedenteDTO[] = [];
   activedRoute: ActivatedRoute;
   usuarioId: number;
+  visualizar: boolean;
   racaSelecionada: RacaDTO;
   classeSelecionada: ClasseDTO;
   form: FormGroup;
+  nomesElficosBuscados: any;
 
   constructor(
     activedRoute: ActivatedRoute,
@@ -51,14 +53,21 @@ export class FichaComponent implements OnInit {
       personagem: [null, Validators.required],
     })
 
+    this.activedRoute.queryParams.subscribe(params => {
+      this.usuarioId = params.usuario;
+      this.visualizar = params.visualizar;
+		});
+
+    this.fichaService.apiElfica().subscribe((r:any) =>{
+      this.nomesElficosBuscados = r.contents.names;
+    });
+
     this.fichaService.buscarRacaClasse().subscribe(r=>{
       this.racas = r.racas
       this.classes = r.classes
     });
 
-    this.activedRoute.queryParams.subscribe(params => {
-      this.usuarioId = params.usuario;
-		});
+
   }
 
   submit(){
@@ -104,6 +113,10 @@ export class FichaComponent implements OnInit {
 
   }
 
+  gerarNomes(){
+    const numero = Math.floor(Math.random() * this.nomesElficosBuscados.length);
+    this.form.controls.personagem.setValue(this.nomesElficosBuscados[numero]);
+  }
   buscaOrigemAntecedente(event: any){
     if(this.form.controls.raca.value != null && this.form.controls.classe.value != null ){
       this.fichaService.buscarOrigemAntecedente(this.form.controls.raca.value, this.form.controls.classe.value).subscribe(r=>{

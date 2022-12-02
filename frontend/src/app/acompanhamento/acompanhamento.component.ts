@@ -8,6 +8,7 @@ import { OrigemDTO } from 'src/modules/origem-dto';
 import { RacaDTO } from 'src/modules/raca-dto';
 
 import { AcompanhamentoService } from '../service/acompanhamento.service';
+import { NotificationService } from '../service/notification.service';
 import { UsuarioDTO } from './../../modules/usuario-dto';
 
 @Component({
@@ -27,13 +28,14 @@ export class AcompanhamentoComponent implements OnInit {
 	activedRoute: ActivatedRoute;
 	router: Router;
 
-  displayedColumns: string[] = ['personagem', 'raca', 'classe', 'antecedente', 'origem'];
+  displayedColumns: string[] = ['personagem', 'raca', 'classe', 'antecedente', 'origem', 'id'];
   dataSource: FichaDTO[] = [];
 
   constructor(
 	  activedRoute: ActivatedRoute,
     private acompanhamentoService: AcompanhamentoService,
     router: Router,
+    private notificationService: NotificationService,
   ) {
     this.activedRoute = activedRoute;
     this.router = router;
@@ -43,14 +45,27 @@ export class AcompanhamentoComponent implements OnInit {
     this.activedRoute.queryParams.subscribe(params => {
       this.usuario = params.usuario;
       this.acompanhamentoService.buscarFichas(params.usuario).subscribe((fichas: FichaDTO[]) =>{
-        console.log('aaaaaaaaaa',fichas)
         this.fichas = fichas;
-        console.log(this.fichas)
         this.dataSource = this.fichas;
       })
 		});
   }
 
+  deletarFicha(id:number){
+    this.acompanhamentoService.apagarFicha(id).subscribe(r=>{
+      this.notificationService.sucesso('Ficha Apagada!');
+      this.dataSource = this.dataSource.filter(x => x.id != id)
+    })
+  }
+
+  async atualizarFicha(id:number){
+    await this.router.navigate(["/ficha"],{
+      queryParams: {
+        usuario: this.usuario,
+        visualizar: true
+      }
+    });
+  }
 
   async redirectToFichas(){
     await this.router.navigate(["/ficha"],{

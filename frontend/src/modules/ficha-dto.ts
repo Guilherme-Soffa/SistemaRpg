@@ -5,6 +5,7 @@ import { OrigemDTO } from "./origem-dto";
 import { RacaDTO } from "./raca-dto";
 
 export interface FichaDTO{
+  id: number;
   usuario: UsuarioDTO;
   personagem: string;
   classe: ClasseDTO;

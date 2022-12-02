@@ -10,7 +10,13 @@ export class AcompanhamentoService {
   buscarFichas(id: number): Observable<FichaDTO[]> {
     return this.http.get<FichaDTO[]>(`/api/buscar-fichas/${id}`);
   }
+
   buscarDadosBanco(): Observable<DadosBancoDTO> {
     return this.http.get<DadosBancoDTO>(`/api/buscar-dados-banco/`);
   }
+
+  apagarFicha(id:number): Observable<void>{
+    return this.http.delete<void>(`/api/${id}`);
+  }
+
 }
