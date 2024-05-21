@@ -1,9 +1,7 @@
 package br.uniceub.rpg.service.dto;
 
 import br.uniceub.rpg.comum.entity.Antecedente;
-import br.uniceub.rpg.comum.entity.Classe;
 import br.uniceub.rpg.comum.entity.Origem;
-import br.uniceub.rpg.comum.entity.Raca;
 import lombok.*;
 
 import java.util.ArrayList;

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UsuarioDTO } from '../../modules/usuario-dto';
+import { UsuarioDTO } from '../modules/usuario-dto';
 import { CadastroUsuarioService } from '../service/cadastro-usuario.service';
 import { NotificationService } from '../service/notification.service';
 

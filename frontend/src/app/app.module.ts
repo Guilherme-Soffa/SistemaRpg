@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldModule } from '@angular/material/form-field';
@@ -16,6 +16,9 @@ import { CadastroUsuarioComponent } from './cadastro-usuario/cadastro-usuario.co
 import { FichaComponent } from './ficha/ficha.component';
 import { LoginUsuarioComponent } from './login-usuario/login-usuario.component';
 import { ListagemBancoComponent } from './listagem-banco/listagem-banco.component';
+import { HttpErrorInterceptor } from './config/handler-errors.interceptor';
+import { MapDialogComponent } from './map-dialog/map-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -23,13 +26,16 @@ import { ListagemBancoComponent } from './listagem-banco/listagem-banco.componen
     CadastroUsuarioComponent,
     LoginUsuarioComponent,
     FichaComponent,
+    MapDialogComponent,
     AcompanhamentoComponent,
-    ListagemBancoComponent
+    ListagemBancoComponent,
+    MapDialogComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    MatDialogModule,
     HttpClientModule,
     FormsModule,
     MatSelectModule,
@@ -40,7 +46,13 @@ import { ListagemBancoComponent } from './listagem-banco/listagem-banco.componen
     MatIconModule,
     ToastrModule.forRoot(),
   ],
-  providers: [{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'fill'}}],
+  providers: [{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'fill'}},
+  {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpErrorInterceptor,
+      multi: true,
+  },
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

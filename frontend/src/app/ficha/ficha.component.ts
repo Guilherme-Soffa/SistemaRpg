@@ -1,14 +1,17 @@
 import { NotificationService } from './../service/notification.service';
-import { OrigemDTO } from './../../modules/origem-dto';
-import { AntecedenteDTO } from './../../modules/antecedente-dto';
+import { OrigemDTO } from '../modules/origem-dto';
+import { AntecedenteDTO } from '../modules/antecedente-dto';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ClasseDTO } from 'src/modules/classe-dto';
-import { RacaDTO } from 'src/modules/raca-dto';
+import { ClasseDTO } from '../modules/classe-dto';
+import { RacaDTO } from '../modules/raca-dto';
 import { FichaService } from '../service/ficha.service';
-import { UsuarioDTO } from 'src/modules/usuario-dto';
-import { FichaDTO } from 'src/modules/ficha-dto';
+import { UsuarioDTO } from '../modules/usuario-dto';
+import { FichaDTO } from '../modules/ficha-dto';
+import { MatDialog } from '@angular/material/dialog';
+import { MapDialogComponent } from '../map-dialog/map-dialog.component';
+
 
 
 @Component({
@@ -39,6 +42,7 @@ export class FichaComponent implements OnInit {
     private fichaService: FichaService,
     private notificationService: NotificationService,
     router: Router,
+    public dialog: MatDialog
   ) {
     this.activedRoute = activedRoute;
     this.router = router;
@@ -93,6 +97,9 @@ export class FichaComponent implements OnInit {
         usuario: this.usuarioId
       }
     });
+  }
+  openDialog(): void {
+    this.dialog.open(MapDialogComponent,{width: '800px'});
   }
 
   trataDados(): FichaDTO{

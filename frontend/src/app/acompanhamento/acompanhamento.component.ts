@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AntecedenteDTO } from 'src/modules/antecedente-dto';
-import { ClasseDTO } from 'src/modules/classe-dto';
-import { FichaDTO } from 'src/modules/ficha-dto';
-import { OrigemDTO } from 'src/modules/origem-dto';
-import { RacaDTO } from 'src/modules/raca-dto';
+import { AntecedenteDTO } from '../modules/antecedente-dto';
+import { ClasseDTO } from '../modules/classe-dto';
+import { FichaDTO } from '../modules/ficha-dto';
+import { OrigemDTO } from '../modules/origem-dto';
+import { RacaDTO } from '../modules/raca-dto';
 
 import { AcompanhamentoService } from '../service/acompanhamento.service';
 import { NotificationService } from '../service/notification.service';
-import { UsuarioDTO } from './../../modules/usuario-dto';
+import { UsuarioDTO } from '../modules/usuario-dto';
 
 @Component({
   selector: 'app-acompanhamento',

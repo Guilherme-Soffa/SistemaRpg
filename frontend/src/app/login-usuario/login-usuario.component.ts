@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UsuarioDTO } from 'src/modules/usuario-dto';
+import { UsuarioDTO } from '../modules/usuario-dto';
 import { CadastroUsuarioService } from '../service/cadastro-usuario.service';
 import { NotificationService } from '../service/notification.service';
 
@@ -38,13 +38,19 @@ export class LoginUsuarioComponent implements OnInit {
     if(this.form.valid){
       this.trataDados();
       this.cadastroUsuarioService.logarUsuario(this.trataDados()).subscribe(r=>{
-        this.notificationService.sucesso('Usuario Logado!')
-        this.router.navigate(["/acompanhamento"],{
-            queryParams: {
-              usuario: r.id
-            }
-          });
+        if(r != null){
+          this.notificationService.sucesso('Usuario Logado!')
+          this.router.navigate(["/acompanhamento"],{
+              queryParams: {
+                usuario: r.id
+              }
+            });
+        }else{
+          this.notificationService.erro('Senha ou Usuário errado!')
+        }
       });
+    }else{
+      this.notificationService.erro('Senha ou Usuário errado!')
     }
   }
   trataDados(): UsuarioDTO{

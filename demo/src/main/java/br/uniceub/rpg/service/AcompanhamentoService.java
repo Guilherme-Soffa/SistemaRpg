@@ -1,19 +1,17 @@
 package br.uniceub.rpg.service;
 
 import br.uniceub.rpg.comum.entity.Ficha;
-import br.uniceub.rpg.comum.entity.Usuario;
 import br.uniceub.rpg.comum.exception.NegocioException;
 import br.uniceub.rpg.comum.mapper.*;
+import br.uniceub.rpg.exception.RpgException;
 import br.uniceub.rpg.service.dto.*;
 //import br.uniceub.rpg.service.repository.AcompanhamentoRepository;
 import br.uniceub.rpg.service.repository.*;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -31,7 +29,7 @@ public class AcompanhamentoService{
     private final RacaMapper racaMapper;
     private final ClasseMapper classeMapper;
 
-    public List<FichaDTO> Buscar(Long id){
+    public List<FichaDTO> buscar(Long id){
         //Busca as fichas cadastradas
         List<Ficha> fichas = this.fichaRepository.buscarPorIdUsuario(id);
 
@@ -56,14 +54,14 @@ public class AcompanhamentoService{
              fichasDTO.add(fichaDTO);
         });
 
-        if(fichasDTO.size() > 0){
+        if(!fichasDTO.isEmpty()){
             return fichasDTO;
         }else {
-            throw new NegocioException(this.getClass().getName(), "Nenhuma ficha encontrada!");
+            throw new RpgException("Nenhuma ficha encontrada!");
         }
     }
 
-    public DadosBancoDTO BuscarDadosBanco(){
+    public DadosBancoDTO buscarDadosBanco(){
 
         DadosBancoDTO dadosDTO = new DadosBancoDTO();
         List<AntecedenteDTO> antecedenteDTO = this.antecedenteMapper.toDto(this.antecedenteRepository.findAll());
@@ -79,7 +77,7 @@ public class AcompanhamentoService{
         return dadosDTO;
     }
 
-    public void DeletarFicha(Long id){
+    public void deletarFicha(Long id){
         this.fichaRepository.deleteById(id);
     }
 }

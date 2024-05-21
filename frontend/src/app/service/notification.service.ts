@@ -14,11 +14,15 @@ export class NotificationService {
   }
 
   sucesso(mensagem: string) {
-    this.toastService.success(mensagem, 'Sucesso')
+    this.toastService.success(mensagem, 'Sucesso', {
+      positionClass: 'toast-top-center',
+    });
   }
 
   erro(mensagem: string) {
-    this.toastService.error(mensagem, 'Erro');
+    this.toastService.error(mensagem, 'Erro', {
+      positionClass: 'toast-top-center',
+    });
   }
 
   info(mensagem: string) {

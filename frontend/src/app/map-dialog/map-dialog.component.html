@@ -1,0 +1,6 @@
+<div class="container">
+  <img #mapImage src="assets/mapa.jpg" class="moving-image">
+  <div class="pin" [style.left]="'10%'" [style.top]="'20%'" (click)="showInfo('pin1')"></div>
+  <div class="pin" [style.left]="'30%'" [style.top]="'40%'" (click)="showInfo('pin2')"></div>
+  <button mat-icon-button class="close-button" (click)="closeDialog()"><mat-icon>close</mat-icon></button>
+</div>

@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AntecedenteDTO } from 'src/modules/antecedente-dto';
-import { ClasseDTO } from 'src/modules/classe-dto';
-import { DadosBancoDTO } from 'src/modules/dados-banco-dto';
-import { FichaDTO } from 'src/modules/ficha-dto';
-import { OrigemDTO } from 'src/modules/origem-dto';
-import { RacaDTO } from 'src/modules/raca-dto';
+import { AntecedenteDTO } from '../modules/antecedente-dto';
+import { ClasseDTO } from '../modules/classe-dto';
+import { DadosBancoDTO } from '../modules/dados-banco-dto';
+import { FichaDTO } from '../modules/ficha-dto';
+import { OrigemDTO } from '../modules/origem-dto';
+import { RacaDTO } from '../modules/raca-dto';
 
 import { AcompanhamentoService } from '../service/acompanhamento.service';
-import { UsuarioDTO } from './../../modules/usuario-dto';
+import { UsuarioDTO } from '../modules/usuario-dto';
 
 @Component({
   selector: 'app-listagem-banco',
@@ -46,9 +46,13 @@ export class ListagemBancoComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log('dados aaaaaaaaaa')
     this.activedRoute.queryParams.subscribe(params => {
+    console.log('dados aaaaaaaaaa',params);
+
       this.usuario = params.usuario;
       this.acompanhamentoService.buscarDadosBanco().subscribe((dados: DadosBancoDTO) =>{
+        console.log('dados',dados)
         this.dataSource1 = dados.raca;
         this.dataSource2 = dados.classe;
         this.dataSource3 = dados.antecedente;

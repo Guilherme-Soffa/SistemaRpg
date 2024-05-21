@@ -1,8 +1,6 @@
 package br.uniceub.rpg.service.repository;
 
 import br.uniceub.rpg.comum.entity.Antecedente;
-import br.uniceub.rpg.comum.entity.Origem;
-import br.uniceub.rpg.comum.entity.Raca;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

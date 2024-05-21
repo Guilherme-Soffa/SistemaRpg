@@ -1,8 +1,8 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import { DadosBancoDTO } from "src/modules/dados-banco-dto";
-import { FichaDTO } from "src/modules/ficha-dto";
+import { FichaDTO } from "../modules/ficha-dto";
+import { DadosBancoDTO } from "../modules/dados-banco-dto";
 @Injectable({ providedIn: "root" })
 export class AcompanhamentoService {
 	constructor(private readonly http: HttpClient) {}

@@ -1,11 +1,11 @@
-import { RacaDTO } from './../../modules/raca-dto';
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
-import { FichaDTO } from "src/modules/ficha-dto";
-import { RacasClassesDTO } from "src/modules/racas-classes-dto";
-import { ClasseDTO } from 'src/modules/classe-dto';
-import { OrigensAntecedentesDTO } from 'src/modules/origens-antecedentes-dto';
+import { Observable, catchError, throwError } from "rxjs";
+import { RacasClassesDTO } from "../modules/racas-classes-dto";
+import { ClasseDTO } from "../modules/classe-dto";
+import { FichaDTO } from "../modules/ficha-dto";
+import { OrigensAntecedentesDTO } from "../modules/origens-antecedentes-dto";
+import { RacaDTO } from "../modules/raca-dto";
 @Injectable({ providedIn: "root" })
 export class FichaService {
 	constructor(private readonly http: HttpClient) {}
@@ -23,6 +23,14 @@ export class FichaService {
   }
 
   apiElfica(): Observable<void>{
-    return this.http.get<void>(`https://api.fungenerators.com/name/generate?category=elf&limit=20`);
+    return this.http.get<void>(`https://api.fungenerators.com/name/generate?category=elf&limit=20`).pipe(
+      catchError((error: HttpErrorResponse) => {
+        let errorMessage = 'Unknown error occurred';
+        if (error.status === 0) {
+          errorMessage = 'limit overused'; // Customize your error message here
+        }
+        return throwError(errorMessage);
+      })
+    );
   }
 }

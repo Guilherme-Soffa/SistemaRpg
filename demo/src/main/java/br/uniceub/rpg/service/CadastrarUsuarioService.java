@@ -2,7 +2,7 @@ package br.uniceub.rpg.service;
 
 import br.uniceub.rpg.comum.entity.Usuario;
 import br.uniceub.rpg.comum.exception.NegocioException;
-import br.uniceub.rpg.comum.mapper.UsuarioMapper;
+import br.uniceub.rpg.exception.RpgException;
 import br.uniceub.rpg.service.repository.CadastrarUsuarioRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -25,11 +25,11 @@ public class CadastrarUsuarioService{
     }
 
     public Usuario login(String usuario, String password){
-    Usuario usuarioBuscado = this.cadastrarUsuarioRepository.buscaLogin(usuario,password);
+        Usuario usuarioBuscado = this.cadastrarUsuarioRepository.buscaLogin(usuario,password);
         if(usuarioBuscado != null){
             return usuarioBuscado;
         }else{
-            throw new NegocioException(this.getClass().getName(), "Usuario não encontrado");
+            throw new RpgException("Usuario não encontrado");
         }
     }
 
