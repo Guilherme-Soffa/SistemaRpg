@@ -45,12 +45,15 @@ public class AcompanhamentoService{
             origemDTO.setOrigem(ficha.getOrigem().getOrigem());
             RacaDTO racaDTO = new RacaDTO();
             racaDTO.setRaca(ficha.getRaca().getRaca());
+            NotasDTO notasDTO = new NotasDTO();
+            notasDTO.setNotas(ficha.getNotas());
 
              fichaDTO.setAntecedente(antecedenteDTO);
              fichaDTO.setClasse(classeDTO);
              fichaDTO.setOrigem(origemDTO);
              fichaDTO.setRaca(racaDTO);
              fichaDTO.setPersonagem(ficha.getNomePersonagem());
+             fichaDTO.setNotas(notasDTO);
              fichasDTO.add(fichaDTO);
         });
 
@@ -59,6 +62,20 @@ public class AcompanhamentoService{
         }else {
             throw new RpgException("Nenhuma ficha encontrada!");
         }
+    }
+
+    public NotasDTO salvarNotas(NotasDTO notasDTO){
+        Ficha ficha = this.fichaRepository.findById(notasDTO.getId()).orElseThrow(() -> new RpgException("Ficha não encontrada!"));
+        ficha.setNotas(notasDTO.getNotas());
+        this.fichaRepository.save(ficha);
+        return notasDTO;
+    }
+
+    public NotasDTO buscarNotas(Long id){
+        Ficha ficha = this.fichaRepository.findById(id).orElseThrow(() -> new RpgException("Ficha não encontrada!"));
+        NotasDTO notas = new NotasDTO();
+        notas.setNotas(ficha.getNotas());
+        return notas;
     }
 
     public DadosBancoDTO buscarDadosBanco(){

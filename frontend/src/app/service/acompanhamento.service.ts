@@ -3,6 +3,7 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { FichaDTO } from "../modules/ficha-dto";
 import { DadosBancoDTO } from "../modules/dados-banco-dto";
+import { NotasDTO } from "../modules/notas-dto";
 @Injectable({ providedIn: "root" })
 export class AcompanhamentoService {
 	constructor(private readonly http: HttpClient) {}
@@ -19,4 +20,13 @@ export class AcompanhamentoService {
     return this.http.delete<void>(`/api/${id}`);
   }
 
+
+  atualizarNotas(id: number, notas: string): Observable<void> {
+    const notasDTO:NotasDTO = {id, notas};
+    return this.http.post<void>(`/api/salvar-notas`, notasDTO);
+  }
+
+  // buscarNotas(id: number): Observable<DadosBancoDTO> {
+  //   return this.http.get<DadosBancoDTO>(`/api/buscar-notas/${id}`);
+  // }
 }

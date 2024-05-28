@@ -19,6 +19,8 @@ import { ListagemBancoComponent } from './listagem-banco/listagem-banco.componen
 import { HttpErrorInterceptor } from './config/handler-errors.interceptor';
 import { MapDialogComponent } from './map-dialog/map-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { TextAreaDialogComponent } from './acompanhamento/dialog/text-area-dialog/text-area-dialog.component';
+import { UploadImageDialogComponent } from './acompanhamento/dialog/upload-image-dialog/upload-image-dialog.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { MatDialogModule } from '@angular/material/dialog';
     MapDialogComponent,
     AcompanhamentoComponent,
     ListagemBancoComponent,
-    MapDialogComponent
+    MapDialogComponent,
+    TextAreaDialogComponent,
+    UploadImageDialogComponent
   ],
   imports: [
     BrowserModule,

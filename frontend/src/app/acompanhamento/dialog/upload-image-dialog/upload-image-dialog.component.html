@@ -1,0 +1,8 @@
+<mat-dialog-content>
+  <img *ngIf="imagePreview" [src]="imagePreview" alt="Image preview" />
+</mat-dialog-content>
+<mat-dialog-actions>
+  <input type="file" (change)="onFileSelected($event)">
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button [mat-dialog-close]="selectedFile" cdkFocusInitial>Upload</button>
+</mat-dialog-actions>

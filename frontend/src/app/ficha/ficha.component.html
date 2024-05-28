@@ -7,8 +7,7 @@
       <button class="mt-10" (click)="gerarNomes()">aleatorio</button>
     </mat-form-field>
   </form>
-<button mat-raised-button class="botaoVoltar" (click)="openDialog()">Open Map</button>
-
+<button mat-raised-button class="botaoVoltar center-button" (click)="openDialog()">Open Map</button>
   <form [formGroup]="form">
     <mat-form-field class="form-field" appearance="outline">
       <mat-select formControlName="raca" (selectionChange)="buscaOrigemAntecedente($event)" placeholder="Seleciona a sua Raça">

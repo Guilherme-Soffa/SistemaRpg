@@ -14,8 +14,8 @@ export class MapDialogComponent implements AfterViewInit {
 
   ngAfterViewInit() {
     panzoom(this.mapImage.nativeElement, {
-      maxZoom: 10,  // Maximum zoom level, adjust as needed
-      minZoom: 5  // Minimum zoom level, adjust as needed
+      maxZoom: 100,  // Maximum zoom level, adjust as needed
+      minZoom: 0.5  // Minimum zoom level, adjust as needed
     });
   }
   showInfo(pin: string): void {

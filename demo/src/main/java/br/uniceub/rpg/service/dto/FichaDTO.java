@@ -15,4 +15,5 @@ public class FichaDTO {
     RacaDTO raca;
     OrigemDTO origem;
     AntecedenteDTO antecedente;
+    NotasDTO notas;
 }

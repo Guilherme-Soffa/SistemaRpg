@@ -68,3 +68,17 @@ body{
   align-items: center;
   margin-top: 5px;
 }
+.center-button {
+  display: block;
+  width: 200px;
+  height: 50px;
+  margin: 20px auto;
+  background-color: #4CAF50; /* change as needed */
+  color: white; /* change as needed */
+  font-size: 18px; /* change as needed */
+  border-radius: 12px; /* change as needed */
+}
+
+.center-button:hover {
+  background-color: #45a049; /* change as needed */
+}

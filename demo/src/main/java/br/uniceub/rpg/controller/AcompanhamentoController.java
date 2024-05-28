@@ -3,6 +3,7 @@ package br.uniceub.rpg.controller;
 import br.uniceub.rpg.service.AcompanhamentoService;
 import br.uniceub.rpg.service.dto.DadosBancoDTO;
 import br.uniceub.rpg.service.dto.FichaDTO;
+import br.uniceub.rpg.service.dto.NotasDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -34,4 +35,16 @@ public class AcompanhamentoController {
         this.acompanhamentoService.deletarFicha(id);
     }
 
+    @PostMapping("salvar-notas")
+    @PreAuthorize("isAuthenticated()")
+    public ResponseEntity<NotasDTO> buscarFichas(@RequestBody NotasDTO notasDTO){
+        return ResponseEntity.ok(this.acompanhamentoService.salvarNotas(notasDTO));
+    };
+
+    @GetMapping("buscar-notas/{id}")
+    @PreAuthorize("isAuthenticated()")
+    public ResponseEntity<NotasDTO> buscarNotas(@PathVariable("id") Long id){
+        NotasDTO notasDTO = this.acompanhamentoService.buscarNotas(id);
+        return ResponseEntity.ok(notasDTO);
+    }
 }

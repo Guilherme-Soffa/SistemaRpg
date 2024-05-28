@@ -1,0 +1,10 @@
+<h2 mat-dialog-title>Notas</h2>
+<mat-dialog-content class="dialog-content">
+  <mat-form-field class="full-width">
+    <textarea cdkTextareaAutosize matInput [(ngModel)]="data.text" class="full-size-textarea"></textarea>
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button class="botao" mat-button (click)="onNoClick()">Cancelar</button>
+  <button class="botaoEnviar" mat-button [mat-dialog-close]="data.text" cdkFocusInitial>Salvar</button>
+</mat-dialog-actions>

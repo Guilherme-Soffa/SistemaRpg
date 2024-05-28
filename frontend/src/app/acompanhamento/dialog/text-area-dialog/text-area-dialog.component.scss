@@ -1,0 +1,59 @@
+textarea {
+  resize: none; /* This will disable the user's ability to resize the textarea */
+  overflow: hidden; /* This will hide the scrollbar */
+}
+.full-width {
+  width: 100%;
+  flex-grow: 1;
+}
+.dialog-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.mat-dialog-content {
+  padding: 0;
+  margin: 0;
+}
+.full-size-textarea {
+  width: 100%;
+  height: 100%;
+}
+
+.botao{
+  height: 50px;
+  width: 150px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 1px 2px 2px rgb(0 0 0 / 10%);
+  background-color: white;
+  color: #0c2c57;
+  transition: filter 0.2s;
+  margin-right: 5px;
+  &:hover {
+    filter: brightness(0.9);
+  }
+}
+.mat-form-field-underline {
+  display: none;
+}
+.mat-form-field {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.botaoEnviar {
+  height: 50px;
+  width: 150px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 1px 2px 2px rgb(0 0 0 / 10%);
+  background-color: #0c2c57;
+  color: #ffffff;
+  transition: filter 0.2s;
+  &:hover {
+    filter: brightness(0.9);
+  }
+}
+

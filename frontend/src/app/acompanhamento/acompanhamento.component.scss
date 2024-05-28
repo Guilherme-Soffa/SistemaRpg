@@ -91,3 +91,18 @@ body{
     filter: brightness(0.9);
   }
 }
+.delete-button {
+  color: black;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.open-dialog-button {
+  color: black;
+  cursor: pointer;
+}
+.action-buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 60px;
+}
