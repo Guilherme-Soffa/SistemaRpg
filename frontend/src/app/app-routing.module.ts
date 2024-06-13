@@ -5,11 +5,13 @@ import { CadastroUsuarioComponent } from './cadastro-usuario/cadastro-usuario.co
 import { FichaComponent } from './ficha/ficha.component';
 import { ListagemBancoComponent } from './listagem-banco/listagem-banco.component';
 import { LoginUsuarioComponent } from './login-usuario/login-usuario.component';
+import { HomepageComponent } from './homepage/homepage.component';
+import { EditUsuarioComponent } from './cadastro-usuario/edit-usuario/edit-usuario.component';
 
 const routes: Routes = [
   {
     path: "",
-    redirectTo: "/login",
+    redirectTo: "/home",
     pathMatch: "full"
   },
 
@@ -26,12 +28,20 @@ const routes: Routes = [
     component: AcompanhamentoComponent,
   },
   {
+    path: "home",
+    component: HomepageComponent,
+  },
+  {
     path: "ficha",
     component: FichaComponent,
   },
   {
     path: "listagem-banco",
     component: ListagemBancoComponent,
+  },
+  {
+    path: "editar-usuario",
+    component: EditUsuarioComponent,
   },
 ];
 

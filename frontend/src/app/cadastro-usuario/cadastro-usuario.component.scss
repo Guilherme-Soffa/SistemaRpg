@@ -57,10 +57,15 @@
   opacity: 1 !important;
   font-size: 25px;
   margin: 8px 0px 21px 4px;
+  color: white;
   font-size: 19px;
 }
 .conta{
   color: #CDBDA0;
+}
+
+input.usuario, input.password {
+  color: white;
 }
 body{
   background-image: url(../imagens/mapa.jfif);

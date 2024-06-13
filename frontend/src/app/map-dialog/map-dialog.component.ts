@@ -22,9 +22,20 @@ export class MapDialogComponent implements AfterViewInit {
     // Fetch the information from the backend
     // this.yourService.getPinInfo(pin).subscribe(info => {
     //   // Show the information
-    //   console.log(info);
+    //   ;
     // });
-    console.log('testeeeeeeeeeee')
+
+  }
+  showInfo3(pin: string): void {
+
+  }
+  showInfo2(pin: string): void {
+    // Fetch the information from the backend
+    // this.yourService.getPinInfo(pin).subscribe(info => {
+    //   // Show the information
+    //   ;
+    // });
+
   }
   closeDialog(): void {
     this.dialogRef.close();

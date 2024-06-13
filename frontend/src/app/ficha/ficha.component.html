@@ -1,9 +1,14 @@
+<app-navbar [usuario]="usuario"></app-navbar>
 <body>
-  <a style="display: flex; justify-content: center; align-items: center;">Criação de Personagem</a>
+
+  <a *ngIf="!visualizar; else other" style="display: flex; justify-content: center; align-items: center;">Criação de Personagem</a>
+  <ng-template #other>
+    <a style="display: flex; justify-content: center; align-items: center;">Edição de Personagem</a>
+  </ng-template>
 
   <form [formGroup]="form">
     <mat-form-field class="form-field" appearance="fill">
-      <input formControlName="personagem" matInput placeholder="Nome do Personagem">
+      <input formControlName="nomePersonagem" matInput placeholder="Nome do Personagem">
       <button class="mt-10" (click)="gerarNomes()">aleatorio</button>
     </mat-form-field>
   </form>
@@ -54,7 +59,10 @@
 
   <div class="botao">
     <button class="botaoVoltar" (click)="voltar()">Voltar</button>
-    <button type="submit" class="botaoEnviar" (click)="submit()">Cadastrar Nova Ficha</button>
+    <button *ngIf="!visualizar; else botaoEdit" type="submit" class="botaoEnviar" (click)="submit()">Cadastrar Nova Ficha</button>
+    <ng-template #botaoEdit>
+      <button type="button" class="botaoEnviar" (click)="atualizarFicha()">Salvar</button>
+    </ng-template>
   </div>
 
 </body>

@@ -1,14 +1,15 @@
 <body>
-  <div>
-    <button class="botaoLogin" (click)="redirectToLogin()">Logout</button>
-  </div>
+  <app-navbar [usuario]="usuario"></app-navbar>
 
   <a style="display: flex; justify-content: center; align-items: center;">Seus Personagens</a>
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 col-10">
     <ng-container matColumnDef="upload">
       <th mat-header-cell *matHeaderCellDef style="font-weight: bold"> Upload Image </th>
       <td mat-cell *matCellDef="let element">
-        <button mat-button (click)="openUploadDialog(element.id)">Upload Image</button>
+        <img *ngIf="element.imagem; else botao" (click)="openUploadDialog(element.id)" [src]="element.imagem" alt="Image preview" width="100" height="100" />
+        <ng-template #botao>
+          <button mat-button (click)="openUploadDialog(element.id)">Upload Image</button>
+        </ng-template>
       </td>
     </ng-container>
 
@@ -42,6 +43,7 @@
       <td mat-cell *matCellDef="let element">
         <div class="action-buttons">
           <mat-icon class="open-dialog-button" (click)="openDialog(element.id,element)">notes</mat-icon>
+          <mat-icon class="open-dialog-button" (click)="atualizarFicha(element.id)">edit</mat-icon>
           <mat-icon class="delete-button" (click)="deletarFicha(element.id)">delete</mat-icon>
         </div>
       </td>
@@ -50,9 +52,4 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
-
-  <div class="botao">
-    <button class="botaoVoltar" (click)="redirectToListagem()">Listagem dos Dados</button>
-    <button class="botaoEnviar" (click)="redirectToFichas()">Nova Ficha</button>
-  </div>
 </body>

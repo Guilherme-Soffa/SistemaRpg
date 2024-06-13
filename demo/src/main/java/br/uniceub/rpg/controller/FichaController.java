@@ -36,4 +36,17 @@ public class FichaController {
     public ResponseEntity<Ficha> cadastrarFicha(@RequestBody FichaDTO fichaDTO){
         return ResponseEntity.ok(this.fichaService.salvarFicha(fichaDTO));
     }
+
+    @PostMapping("atualizar-ficha")
+    @PreAuthorize("isAuthenticated()")
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseEntity<Ficha> atualizarFicha(@RequestBody FichaDTO fichaDTO){
+        return ResponseEntity.ok(this.fichaService.atualizarFicha(fichaDTO));
+    }
+
+    @GetMapping("buscar-ficha/{id}")
+    @PreAuthorize("isAuthenticated()")
+    public ResponseEntity<FichaDTO> buscarOrigemAntecedente(@PathVariable Long id){
+        return ResponseEntity.ok(this.fichaService.findById(id));
+    };
 }

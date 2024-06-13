@@ -1,6 +1,10 @@
 <div class="container">
-  <img #mapImage src="assets/mapa.jpg" class="moving-image">
-  <div class="pin" [style.left]="'10%'" [style.top]="'20%'" (click)="showInfo('pin1')"></div>
-  <div class="pin" [style.left]="'30%'" [style.top]="'40%'" (click)="showInfo('pin2')"></div>
+  <img #mapImage src="assets/mapa.jpg" class="moving-image" usemap="#image-map">
+
+  <map name="image-map">
+    <area alt="Pin 1" title="Pin 1" coords="460,300,20" shape="circle" (click)="showInfo('ESLTURIEL')">
+    <area alt="Pin 1" title="Pin 1" coords="400,300,20" shape="circle" (click)="showInfo3('bg3')">
+    <area alt="Pin 2" title="Pin 2" coords="20,30,80,90" shape="rect" (click)="showInfo2('pin2')">
+  </map>
   <button mat-icon-button class="close-button" (click)="closeDialog()"><mat-icon>close</mat-icon></button>
 </div>

@@ -22,6 +22,10 @@ export class FichaService {
     return this.http.post<FichaDTO>(`/api/cadastrar-ficha`,ficha);
   }
 
+  atualizarFicha(ficha: FichaDTO): Observable<FichaDTO> {
+    return this.http.post<FichaDTO>(`/api/atualizar-ficha`,ficha);
+  }
+
   apiElfica(): Observable<void>{
     return this.http.get<void>(`https://api.fungenerators.com/name/generate?category=elf&limit=20`).pipe(
       catchError((error: HttpErrorResponse) => {
@@ -32,5 +36,9 @@ export class FichaService {
         return throwError(errorMessage);
       })
     );
+  }
+
+  findById(id: number): Observable<FichaDTO> {
+    return this.http.get<FichaDTO>(`/api/buscar-ficha/${id}`);
   }
 }

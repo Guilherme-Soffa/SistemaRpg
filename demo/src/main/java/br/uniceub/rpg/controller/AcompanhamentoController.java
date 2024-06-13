@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -46,5 +47,10 @@ public class AcompanhamentoController {
     public ResponseEntity<NotasDTO> buscarNotas(@PathVariable("id") Long id){
         NotasDTO notasDTO = this.acompanhamentoService.buscarNotas(id);
         return ResponseEntity.ok(notasDTO);
+    }
+
+    @PostMapping("/upload-image")
+    public void uploadImage(@RequestParam("id") Long id, @RequestParam("image") MultipartFile file) {
+        this.acompanhamentoService.saveImage(id, file);
     }
 }

@@ -8,6 +8,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
   styleUrls: ['./text-area-dialog.component.scss']
 })
 export class TextAreaDialogComponent {
+  public editorData = '';
 
   constructor(
     public dialogRef: MatDialogRef<TextAreaDialogComponent>,

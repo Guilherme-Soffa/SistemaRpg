@@ -33,13 +33,8 @@ public class CadastrarUsuarioService{
         }
     }
 
-
-
-
-
-
-
-
-
+    public Usuario buscar(Long id){
+        return this.cadastrarUsuarioRepository.findById(id).get();
+    }
 
 }

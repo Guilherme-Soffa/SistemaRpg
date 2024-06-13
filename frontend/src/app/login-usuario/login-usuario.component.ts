@@ -40,7 +40,7 @@ export class LoginUsuarioComponent implements OnInit {
       this.cadastroUsuarioService.logarUsuario(this.trataDados()).subscribe(r=>{
         if(r != null){
           this.notificationService.sucesso('Usuario Logado!')
-          this.router.navigate(["/acompanhamento"],{
+          this.router.navigate(["/home"],{
               queryParams: {
                 usuario: r.id
               }

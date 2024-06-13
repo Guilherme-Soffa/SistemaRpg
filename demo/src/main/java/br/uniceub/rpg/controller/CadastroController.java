@@ -30,5 +30,9 @@ public class CadastroController {
     public ResponseEntity<Usuario> logarUsuario(@PathVariable("usuario") String usuario, @PathVariable("password") String password){
         return ResponseEntity.ok(this.cadastrarUsuarioService.login(usuario, password));
     };
-
+    @GetMapping("usuario/{id}")
+    @PreAuthorize("isAuthenticated()")
+    public ResponseEntity<Usuario> buscarUsuario(@PathVariable("id") Long id){
+        return ResponseEntity.ok(this.cadastrarUsuarioService.buscar(id));
+    };
 }

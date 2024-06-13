@@ -20,13 +20,16 @@ export class AcompanhamentoService {
     return this.http.delete<void>(`/api/${id}`);
   }
 
-
   atualizarNotas(id: number, notas: string): Observable<void> {
     const notasDTO:NotasDTO = {id, notas};
     return this.http.post<void>(`/api/salvar-notas`, notasDTO);
   }
 
-  // buscarNotas(id: number): Observable<DadosBancoDTO> {
-  //   return this.http.get<DadosBancoDTO>(`/api/buscar-notas/${id}`);
-  // }
+  salvarUpload(id: number, file: File): Observable<void> {
+    const formData: FormData = new FormData();
+    formData.append('image', file, file.name);
+    formData.append('id', id.toString());
+
+    return this.http.post<void>(`/api/upload-image`, formData);
+  }
 }

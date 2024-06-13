@@ -16,4 +16,5 @@ public class FichaDTO {
     OrigemDTO origem;
     AntecedenteDTO antecedente;
     NotasDTO notas;
+    byte[] imagem;
 }

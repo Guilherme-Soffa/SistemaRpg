@@ -1,4 +1,6 @@
 <body>
+  <app-navbar></app-navbar>
+
   <form [formGroup]="form" class="mt-3">
     <div class="caixa-cadastro">
       <p class="titulo">Login de Usuario</p>
@@ -11,6 +13,7 @@
         </div>
       </div>
         <button type="submit" class="botaoEnviar" (click)="submit()">Login</button>
+      <p class="conta"><a class="conta" href="/cadastro">Não tenho uma conta</a></p>
       <p class="conta">Esqueceu a Senha? <a class="conta" href="/cadastro">Clique aqui!</a></p>
     </div>
   </form>

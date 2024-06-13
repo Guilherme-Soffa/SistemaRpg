@@ -9,7 +9,12 @@ import br.uniceub.rpg.service.dto.*;
 import br.uniceub.rpg.service.repository.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -54,6 +59,7 @@ public class AcompanhamentoService{
              fichaDTO.setRaca(racaDTO);
              fichaDTO.setPersonagem(ficha.getNomePersonagem());
              fichaDTO.setNotas(notasDTO);
+             fichaDTO.setImagem(ficha.getImagem());
              fichasDTO.add(fichaDTO);
         });
 
@@ -69,6 +75,18 @@ public class AcompanhamentoService{
         ficha.setNotas(notasDTO.getNotas());
         this.fichaRepository.save(ficha);
         return notasDTO;
+    }
+
+    public void saveImage(Long id, MultipartFile file) {
+        try {
+            byte[] bytes = file.getBytes();
+            Ficha acompanhamento = fichaRepository.findById(id)
+                    .orElseThrow(() -> new RuntimeException("Acompanhamento not found with id: " + id));
+            acompanhamento.setImagem(bytes);
+            fichaRepository.save(acompanhamento);
+        } catch (IOException e) {
+            throw new RuntimeException("Failed to store file", e);
+        }
     }
 
     public NotasDTO buscarNotas(Long id){

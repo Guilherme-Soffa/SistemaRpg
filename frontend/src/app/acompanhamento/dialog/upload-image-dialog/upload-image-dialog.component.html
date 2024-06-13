@@ -3,6 +3,8 @@
 </mat-dialog-content>
 <mat-dialog-actions>
   <input type="file" (change)="onFileSelected($event)">
-  <button mat-button (click)="onNoClick()">Cancel</button>
-  <button mat-button [mat-dialog-close]="selectedFile" cdkFocusInitial>Upload</button>
+</mat-dialog-actions>
+<mat-dialog-actions>
+  <button mat-button class="botaoVoltar" (click)="onNoClick()">Cancel</button>
+  <button mat-button class="botaoEnviar" [mat-dialog-close]="selectedFile" cdkFocusInitial>Upload</button>
 </mat-dialog-actions>

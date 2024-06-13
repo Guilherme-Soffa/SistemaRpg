@@ -14,5 +14,7 @@ export class CadastroUsuarioService {
   logarUsuario(usuario: UsuarioDTO): Observable<UsuarioDTO> {
     return this.http.get<UsuarioDTO>(`/api/login-usuario/${usuario.usuario}/${usuario.password}`, );
   }
-
+  findUsuarioById(id: number): Observable<UsuarioDTO> {
+    return this.http.get<UsuarioDTO>(`/api/usuario/${id}`);
+  }
 }

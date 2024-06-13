@@ -39,6 +39,10 @@ public class Ficha {
     @Column(name = "ds_nota")
     private String notas;
 
+    @Lob
+    @Column(name = "by_image")
+    private byte[] imagem;
+
     @ManyToOne
     @JoinColumn(name = "fk_usuario", insertable = false, updatable = false)
     private Usuario usuario;

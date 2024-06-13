@@ -46,13 +46,13 @@ export class ListagemBancoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('dados aaaaaaaaaa')
+
     this.activedRoute.queryParams.subscribe(params => {
-    console.log('dados aaaaaaaaaa',params);
+    ;
 
       this.usuario = params.usuario;
       this.acompanhamentoService.buscarDadosBanco().subscribe((dados: DadosBancoDTO) =>{
-        console.log('dados',dados)
+
         this.dataSource1 = dados.raca;
         this.dataSource2 = dados.classe;
         this.dataSource3 = dados.antecedente;

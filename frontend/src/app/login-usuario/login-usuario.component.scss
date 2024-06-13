@@ -14,6 +14,9 @@
   margin-right: -50%;
   transform: translate(-50%, -50%);
 }
+input.usuario, input.password {
+  color: white;
+}
 .usuario{
   opacity:1 !important;
   width: 306px;
@@ -55,6 +58,7 @@
 }
 .titulo{
   opacity: 1 !important;
+  color: white;
   font-size: 25px;
   margin: 8px 0px 21px 4px;
   font-size: 19px;

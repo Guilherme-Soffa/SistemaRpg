@@ -9,7 +9,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { AcompanhamentoComponent } from './acompanhamento/acompanhamento.component';
-import {MatIconModule} from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CadastroUsuarioComponent } from './cadastro-usuario/cadastro-usuario.component';
@@ -21,6 +21,12 @@ import { MapDialogComponent } from './map-dialog/map-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { TextAreaDialogComponent } from './acompanhamento/dialog/text-area-dialog/text-area-dialog.component';
 import { UploadImageDialogComponent } from './acompanhamento/dialog/upload-image-dialog/upload-image-dialog.component';
+import { MatMenuModule } from '@angular/material/menu';
+import { EditUsuarioComponent } from './cadastro-usuario/edit-usuario/edit-usuario.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { HomepageComponent } from './homepage/homepage.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -33,10 +39,16 @@ import { UploadImageDialogComponent } from './acompanhamento/dialog/upload-image
     ListagemBancoComponent,
     MapDialogComponent,
     TextAreaDialogComponent,
-    UploadImageDialogComponent
+    UploadImageDialogComponent,
+    EditUsuarioComponent,
+    HomepageComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatMenuModule,
     AppRoutingModule,
     ReactiveFormsModule,
     MatDialogModule,

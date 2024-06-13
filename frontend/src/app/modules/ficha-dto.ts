@@ -12,4 +12,5 @@ export interface FichaDTO{
   raca: RacaDTO;
   origem: OrigemDTO;
   antecedente: AntecedenteDTO;
+  imagem: any;
 }
