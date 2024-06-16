@@ -1,0 +1,22 @@
+<body>
+  <app-navbar [usuario]="usuario"></app-navbar>
+
+  <form [formGroup]="form" class="mt-3">
+    <div class="caixa-cadastro">
+      <p class="titulo">Edição de Usuario</p>
+      <div class="user-form">
+        <div>
+          <input class="usuario" type="text" label="Usuario" placeholder="Email" formControlName="usuario">
+        </div>
+        <div>
+          <input class="password" matInput [type]="hide ? 'password' : 'text'" placeholder="Senha" formControlName="password">
+          <button mat-icon-button matSuffix (click)="hide = !hide" type="button">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </div>
+      </div>
+        <button type="submit" class="botaoEnviar" (click)="submit()">Salvar Alterações</button>
+        <button type="submit" class="botaoEnviar" [routerLink]="['/home']" [queryParams]="{usuario: usuario}">Cancelar</button>
+    </div>
+  </form>
+</body>

@@ -1,0 +1,21 @@
+<mat-toolbar color="red"  class="toolbar">
+  <button mat-button [routerLink]="['/home']" [queryParams]="{usuario: usuario}">Background Creator</button>
+  <span class="example-spacer"></span>
+  <div  *ngIf="usuario != null" >
+    <button class="botao" mat-button (click)="redirectToFichas()">Nova Ficha </button>
+    <button class="botao" mat-button [routerLink]="['/acompanhamento']" [queryParams]="{usuario: usuario}">Acompanhamento</button>
+    <button class="botao" mat-icon-button (click)="redirectToListagem()">Listagem dos Dados</button>
+    <button mat-icon-button [matMenuTriggerFor]="menu" class="menu-button">
+      <mat-icon>account_circle</mat-icon>
+    </button>
+  </div>
+  <div *ngIf="usuario == null" >
+    <button mat-button [routerLink]="['/login']">Entrar</button>
+    <button mat-button [routerLink]="['/cadastro']">Criar Conta</button>
+  </div>
+</mat-toolbar>
+
+<mat-menu #menu="matMenu">
+  <button mat-menu-item [routerLink]="['/editar-usuario']" [queryParams]="{usuario: usuario}">Edit Profile</button>
+  <button mat-menu-item (click)="redirectToLogin()">Logout</button>
+</mat-menu>

@@ -11,6 +11,10 @@ export class CadastroUsuarioService {
     return this.http.post<UsuarioDTO>(`/api/cadastrar-usuario`, usuario);
   }
 
+  editarUsuario(usuario: UsuarioDTO): Observable<UsuarioDTO> {
+    return this.http.put<UsuarioDTO>(`/api/editar-usuario`, usuario);
+  }
+
   logarUsuario(usuario: UsuarioDTO): Observable<UsuarioDTO> {
     return this.http.get<UsuarioDTO>(`/api/login-usuario/${usuario.usuario}/${usuario.password}`, );
   }
