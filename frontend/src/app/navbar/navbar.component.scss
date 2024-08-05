@@ -1,6 +1,27 @@
-.botao{
-  margin: 10px 160px 10px 10px;
+.botao {
+  margin: 10px 10px 10px 10px;
 }
-.toolbar{
+
+.toolbar {
   position: fixed;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white; /* Define a cor de fundo como branca */
+  color: black; /* Ajusta a cor do texto para preto */
+}
+.toolbar-container {
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.auth-buttons {
+  display: flex;
+  gap: 10px;
 }

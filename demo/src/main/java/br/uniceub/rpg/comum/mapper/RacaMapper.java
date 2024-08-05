@@ -8,18 +8,18 @@ import org.mapstruct.Mappings;
 
 @Mapper(componentModel = "spring")
 public interface RacaMapper extends EntityMapper<RacaDTO, Raca> {
-
-    @Mappings({
-            @Mapping(source = "id", target = "id"),
-            @Mapping(source = "raca", target = "raca"),
-            @Mapping(source = "descricao", target = "descricao")
-    })
-    RacaDTO toDto(Raca entity);
-
-    @Mappings({
-            @Mapping(source = "id", target = "id"),
-            @Mapping(source = "raca", target = "raca"),
-            @Mapping(source = "descricao", target = "descricao")
-    })
-    Raca toEntity(RacaDTO dto);
+//
+//    @Mappings({
+//            @Mapping(source = "id", target = "id"),
+//            @Mapping(source = "raca", target = "raca"),
+//            @Mapping(source = "descricao", target = "descricao")
+//    })
+//    RacaDTO toDto(Raca entity);
+//
+//    @Mappings({
+//            @Mapping(source = "id", target = "id"),
+//            @Mapping(source = "raca", target = "raca"),
+//            @Mapping(source = "descricao", target = "descricao")
+//    })
+//    Raca toEntity(RacaDTO dto);
 }

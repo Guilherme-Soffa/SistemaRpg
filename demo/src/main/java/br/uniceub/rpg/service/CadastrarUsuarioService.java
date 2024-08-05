@@ -37,4 +37,11 @@ public class CadastrarUsuarioService{
         return this.cadastrarUsuarioRepository.findById(id).get();
     }
 
+    public Usuario editar(UsuarioDTO usuario){
+        Usuario usuarioSalvo = this.cadastrarUsuarioRepository.findById(usuario.getId()).get();
+        usuarioSalvo.setUsuario(usuario.getUsuario());
+        usuarioSalvo.setPassword(usuario.getPassword());
+        return this.cadastrarUsuarioRepository.save(usuarioSalvo);
+    }
+
 }

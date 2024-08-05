@@ -10,18 +10,18 @@ import org.mapstruct.Mappings;
 
 @Mapper(componentModel = "spring")
 public interface ClasseMapper extends EntityMapper<ClasseDTO, Classe> {
-
-    @Mappings({
-            @Mapping(source = "id", target = "id"),
-            @Mapping(source = "classe", target = "classe"),
-            @Mapping(source = "descricao", target = "descricao")
-    })
-    ClasseDTO toDto(Classe entity);
-
-    @Mappings({
-            @Mapping(source = "id", target = "id"),
-            @Mapping(source = "classe", target = "classe"),
-            @Mapping(source = "descricao", target = "descricao")
-    })
-    Classe toEntity(ClasseDTO dto);
+//
+//    @Mappings({
+//            @Mapping(source = "id", target = "id"),
+//            @Mapping(source = "classe", target = "classe"),
+//            @Mapping(source = "descricao", target = "descricao")
+//    })
+//    ClasseDTO toDto(Classe entity);
+//
+//    @Mappings({
+//            @Mapping(source = "id", target = "id"),
+//            @Mapping(source = "classe", target = "classe"),
+//            @Mapping(source = "descricao", target = "descricao")
+//    })
+//    Classe toEntity(ClasseDTO dto);
 }

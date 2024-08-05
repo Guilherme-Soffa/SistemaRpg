@@ -35,4 +35,10 @@ public class CadastroController {
     public ResponseEntity<Usuario> buscarUsuario(@PathVariable("id") Long id){
         return ResponseEntity.ok(this.cadastrarUsuarioService.buscar(id));
     };
+
+    @PutMapping("editar-usuario")
+    @PreAuthorize("isAuthenticated()")
+    public ResponseEntity<Usuario> editarUsuario(@RequestBody UsuarioDTO usuario){
+        return ResponseEntity.ok(this.cadastrarUsuarioService.editar(usuario));
+    };
 }

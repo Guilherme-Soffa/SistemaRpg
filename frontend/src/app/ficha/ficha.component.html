@@ -21,6 +21,7 @@
           {{ raca.raca }}
         </mat-option>
       </mat-select>
+      <mat-hint align="end">{{form.get('raca')?.value?.descricao}}</mat-hint>
     </mat-form-field>
   </form>
 
@@ -32,6 +33,7 @@
           {{ classe.classe }}
         </mat-option>
       </mat-select>
+      <mat-hint align="end">{{form.get('classe')?.value?.descricao}}</mat-hint>
     </mat-form-field>
   </form>
 
@@ -43,6 +45,7 @@
           {{ antecedente.antecedente }}
         </mat-option>
       </mat-select>
+      <mat-hint align="end">{{form.get('antecedente')?.value?.descricao}}</mat-hint>
     </mat-form-field>
   </form>
 
@@ -54,6 +57,7 @@
           {{ origem.origem }}
         </mat-option>
       </mat-select>
+      <mat-hint align="end">{{form.get('origem')?.value?.descricao}}</mat-hint>
     </mat-form-field>
   </form>
 

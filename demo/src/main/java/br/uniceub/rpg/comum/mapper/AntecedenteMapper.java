@@ -10,20 +10,20 @@ import java.util.List;
 
 @Mapper(componentModel = "spring")
 public interface AntecedenteMapper {
-    @Mappings({
-            @Mapping(source = "id", target = "id"),
-            @Mapping(source = "antecedente", target = "antecedente"),
-            @Mapping(source = "descricao", target = "descricao")
-    })
-    AntecedenteDTO toDto(Antecedente entity);
-
-    @Mappings({
-            @Mapping(source = "id", target = "id"),
-            @Mapping(source = "antecedente", target = "antecedente"),
-            @Mapping(source = "descricao", target = "descricao")
-    })
-    Antecedente toEntity(AntecedenteDTO dto);
-
-    List<Antecedente> toEntity(List<AntecedenteDTO> dtoList);
-    List<AntecedenteDTO> toDto(List<Antecedente> entityList);
+//    @Mappings({
+//            @Mapping(source = "id", target = "id"),
+//            @Mapping(source = "antecedente", target = "antecedente"),
+//            @Mapping(source = "descricao", target = "descricao")
+//    })
+//    AntecedenteDTO toDto(Antecedente entity);
+//
+//    @Mappings({
+//            @Mapping(source = "id", target = "id"),
+//            @Mapping(source = "antecedente", target = "antecedente"),
+//            @Mapping(source = "descricao", target = "descricao")
+//    })
+//    Antecedente toEntity(AntecedenteDTO dto);
+//
+//    List<Antecedente> toEntity(List<AntecedenteDTO> dtoList);
+//    List<AntecedenteDTO> toDto(List<Antecedente> entityList);
 }

@@ -99,15 +99,15 @@ public class AcompanhamentoService{
     public DadosBancoDTO buscarDadosBanco(){
 
         DadosBancoDTO dadosDTO = new DadosBancoDTO();
-        List<AntecedenteDTO> antecedenteDTO = this.antecedenteMapper.toDto(this.antecedenteRepository.findAll());
-        List<ClasseDTO> classeDTO = this.classeMapper.toDto(this.classeRepository.findAll());
-        List<OrigemDTO> origemDTO = this.origemMapper.toDto(this.origemRepository.findAll());
-        List<RacaDTO> racaDTO = this.racaMapper.toDto(this.racaRepository.findAll());
-
-        dadosDTO.setAntecedente(antecedenteDTO);
-        dadosDTO.setClasse(classeDTO);
-        dadosDTO.setOrigem(origemDTO);
-        dadosDTO.setRaca(racaDTO);
+//        List<AntecedenteDTO> antecedenteDTO = this.antecedenteMapper.toDto(this.antecedenteRepository.findAll());
+//        List<ClasseDTO> classeDTO = this.classeMapper.toDto(this.classeRepository.findAll());
+//        List<OrigemDTO> origemDTO = this.origemMapper.toDto(this.origemRepository.findAll());
+//        List<RacaDTO> racaDTO = this.racaMapper.toDto(this.racaRepository.findAll());
+//
+//        dadosDTO.setAntecedente(antecedenteDTO);
+//        dadosDTO.setClasse(classeDTO);
+//        dadosDTO.setOrigem(origemDTO);
+//        dadosDTO.setRaca(racaDTO);
 
         return dadosDTO;
     }

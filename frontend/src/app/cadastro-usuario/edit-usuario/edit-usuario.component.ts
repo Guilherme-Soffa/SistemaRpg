@@ -58,13 +58,14 @@ export class EditUsuarioComponent implements OnInit {
               usuario: r.id
             }
           });
-        this.notificationService.sucesso('Usuario Cadastrado com Sucesso!')
+        this.notificationService.sucesso('Usuario Editado com Sucesso!')
       });
     }
   }
   trataDados(): UsuarioDTO {
     const dados = this.form.controls
     return {
+      id: this.usuario,
       usuario: dados.usuario.value,
       password: dados.password.value
     } as UsuarioDTO;
